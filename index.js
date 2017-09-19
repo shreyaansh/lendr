@@ -1,9 +1,13 @@
 var express = require('express');
+var cons = require('consolidate');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
+
+// view engine setup
+app.engine('html', cons.swig)
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
